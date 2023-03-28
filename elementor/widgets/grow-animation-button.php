@@ -164,7 +164,7 @@ class Grow_animation_button_Widget extends \Elementor\Widget_Base {
 		$this->add_control(
 			'color',
 			[
-				'label' => esc_html__( 'Button Color', 'textdomain' ),
+				'label' => esc_html__( 'Text Color', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#0e3a2d',
 				'selectors' => [
@@ -184,9 +184,21 @@ class Grow_animation_button_Widget extends \Elementor\Widget_Base {
 			]
 		);
 		$this->add_control(
-			'hover_color',
+			'hover_text_color',
 			[
-				'label' => esc_html__( 'Hover Color', 'textdomain' ),
+				'label' => esc_html__( 'Hover Text Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#0E3A2D',
+				'selectors' => [
+					'{{WRAPPER}} .button:hover .button-text' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'hover_bg_color',
+			[
+				'label' => esc_html__( 'Hover Background Color', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'default' => '#f1ff4e',
 				'selectors' => [
