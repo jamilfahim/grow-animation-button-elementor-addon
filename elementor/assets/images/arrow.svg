@@ -1,0 +1,4 @@
+<!-- sample rectangle -->
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M9.87703 1.24359L2.6274 1.24359L2.6274 1.10737e-07L11.3782 4.79556e-07L12 5.05762e-07L12 0.621796L12 9.37262L10.7564 9.37262L10.7564 2.12292L0.879349 12L-4.687e-07 11.1206L9.87703 1.24359Z" fill="#0E3A2D"/>
+</svg>

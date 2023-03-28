@@ -106,106 +106,116 @@ class Grow_animation_button_Widget extends \Elementor\Widget_Base {
 	 */
 	protected function register_controls() {
 
+		
 		$this->start_controls_section(
-			'dazzel-text-section',
+			'section_content',
 			[
-				'label' => esc_html__( 'Content', 'jhfahim' ),
+				'label' => esc_html__( 'Content', 'textdomain' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
 		$this->add_control(
-			'split_title',
+			'button_name',
 			[
-				'type' => \Elementor\Controls_Manager::TEXTAREA,
-				'label' => esc_html__( 'Text', 'textdomain' ),
-				'placeholder' => esc_html__( 'Enter your text', 'textdomain' ),
-				'default' => esc_html__( 'Enter your text', 'textdomain' ),
+				'label' => esc_html__( 'Button Name', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::TEXT,
+				'placeholder' => esc_html__( 'Enter your Name', 'textdomain' ),
+				'default' => "Button Name",
 			]
 		);
 
-      
+		$this->add_control(
+			'website_link',
+			[
+				'label' => esc_html__( 'Link', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'textdomain' ),
+				'options' => [ 'url', 'is_external', 'nofollow' ],
+				'default' => [
+					'url' => '',
+					'is_external' => true,
+					'nofollow' => true,
+					// 'custom_attributes' => '',
+				],
+				'label_block' => true,
+			]
+		);
+
+		$this->end_controls_section();
+
+
+		$this->start_controls_section(
+			'section_style',
+			[
+				'label' => esc_html__( 'Style', 'textdomain' ),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
 		$this->add_group_control(
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name' => 'content_typography',
-				'label' => esc_html__( 'Typography', 'textdomain' ),
-				'selector' => '{{WRAPPER}} .split-text .title',
+				'selector' => '{{WRAPPER}} .button-text.btn_text_secondary',
 			]
 		);
 
 		$this->add_control(
-			'animation_effect',
+			'color',
 			[
-				'label' => esc_html__( 'Border Style', 'textdomain' ),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'Reveal_From_Bottom',
-				'options' => [
-					'Reveal_From_Bottom' => esc_html__( 'Reveal From Bottom', 'textdomain' ),
-					'Reveal_From_Top' =>  esc_html__('Reveal From Top', 'softtechit'),
-					'Fade_From_Top' =>  esc_html__('Fade From Top', 'softtechit'),
-					'Twist_From_Bottom'  =>  esc_html__('Twist From Bottom', 'softtechit'),
-					'Twist_From_Top' => esc_html__('Twist From Top', 'softtechit'),
-					'Reveal_Single_Letter_From_Bottom' => esc_html__('Reveal Single Letter From Bottom', 'softtechit'),
-					'Reveal_Single_Letter_From_Top' =>  esc_html__('Reveal Single Letter From Top', 'softtechit'),
-				],
-				
-			]
-		);
-		
-		$this->add_control(
-			'alignment',
-			[
-				'type' => \Elementor\Controls_Manager::CHOOSE,
-				'label' => esc_html__( 'Alignment', 'textdomain' ),
-				'options' => [
-					'left' => [
-						'title' => esc_html__( 'Left', 'textdomain' ),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__( 'Center', 'textdomain' ),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__( 'Right', 'textdomain' ),
-						'icon' => 'eicon-text-align-right',
-					],
-				],
-				'default' => 'center',
-				'toggle' => true,
-				'selectors' => [
-					'{{WRAPPER}} .split-text .title' => 'text-align: {{VALUE}};',
-				],
-			]
-		);
-
-	
-		$this->add_control(
-			'content_color',
-			[
-				'label' => esc_html__( 'Text Color', 'elementor-list-widget' ),
+				'label' => esc_html__( 'Button Color', 'textdomain' ),
 				'type' => \Elementor\Controls_Manager::COLOR,
-				'default' => '#000',
+				'default' => '#0e3a2d',
 				'selectors' => [
-					'{{WRAPPER}} .split-text .title' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .button-text.btn_text_secondary' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'bg_color',
+			[
+				'label' => esc_html__( 'Background Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#FFFFFF',
+				'selectors' => [
+					'{{WRAPPER}} .button.intro_what_we_do' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'hover_color',
+			[
+				'label' => esc_html__( 'Hover Color', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'default' => '#f1ff4e',
+				'selectors' => [
+					'{{WRAPPER}} .button::after' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
 
-
-		// $this->add_control(
-		// 	'fill_speed',
-		// 	[
-		// 		'label' => esc_html__( 'Fill Speed', 'textdomain' ),
-		// 		'type' => \Elementor\Controls_Manager::NUMBER,
-		// 		'min' => 0,
-		// 		'max' => 100,
-		// 		'default' => 1,
-		// 	]
-		// );
+		$this->add_group_control(
+			\Elementor\Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'selector' => '{{WRAPPER}} .button.intro_what_we_do',
+			]
+		);
+		$this->add_control(
+			'padding',
+			[
+				'label' => esc_html__( 'Padding', 'textdomain' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em', 'custom' ],
+				'selectors' => [
+					'{{WRAPPER}} .button.intro_what_we_do' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
 		$this->end_controls_section();
+
 
 
 	}
@@ -221,54 +231,14 @@ class Grow_animation_button_Widget extends \Elementor\Widget_Base {
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();
-		$animation_text_content = $settings['split_title'];
-		$animation_text_effect = $settings['animation_effect'];
 		
-
 	   $output = '';
+		$output .= '<a href="'.$settings['website_link']['url'].'" class="button intro_what_we_do w-inline-block">
+		<div class="button-content-wrap">
+			 <div class="button-text btn_text_secondary">' . $settings['button_name'] . '</div>
+		</div>
+  </a>';
 		
-            if( $animation_text_effect === 'Reveal_Single_Letter_From_Bottom'){
-                $output .= '<div class="split-text">
-                <h1 class="title p-5">'.$animation_text_content.'</h1>
-              </div>';
-              
-            }elseif( $animation_text_effect === 'Reveal_From_Bottom'){
-                $output .= '<div class="split-text">
-                <h1 class="title p-3" >'.$animation_text_content.'</h1>
-              </div>';
-            
-            }elseif( $animation_text_effect === 'Fade_From_Top'){
-					$output .= '<div class="split-text">
-					<h1 class="title p-2" >'.$animation_text_content.'</h1>
-				 </div>';
-			
-			  }
-				
-				elseif( $animation_text_effect === 'Reveal_From_Top'){
-                $output .= '<div class="split-text">
-                <h1 class="title p-4"">'.$animation_text_content.'</h1>
-              </div>';
-           
-            }elseif( $animation_text_effect === 'Twist_From_Bottom'){
-                $output .= '<div class="split-text">
-                <h1 class="title p-7" >'.$animation_text_content.'</h1>
-              </div>';
-           
-            }elseif( $animation_text_effect === 'Twist_From_Top'){
-                $output .= '<div class="split-text">
-                <h1 class="title p-8" >'.$animation_text_content.'</h1>
-              </div>';
-           
-            } elseif( $animation_text_effect === 'Reveal_Single_Letter_From_Top'){
-                $output .= '<div class="split-text" >
-                <h1 class="title p-6">'.$animation_text_content.'</h1>
-            </div>';
-           
-            }else {
-                $output .= '<div class="split-text">
-                <h1 class="title"> '.$animation_text_content.'</h1>
-            </div>';
-            }
 
 	echo $output;
 
